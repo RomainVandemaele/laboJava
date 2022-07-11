@@ -10,8 +10,18 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 
 
-@ToString
+
 public abstract class Fish extends LivingBeing implements IFish {
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Fish{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", sex=").append(sex);
+        sb.append(", pv=").append(getHp());
+        sb.append('}');
+        return sb.toString();
+    }
+
     @Getter
     private String name;
     @Getter @Setter
@@ -39,6 +49,14 @@ public abstract class Fish extends LivingBeing implements IFish {
     @Override
     public void getEaten() {
         this.setHp(getHp()-4);
+        if(this.getHp()<=0) {
+            this.triggerDieEvent();
+        }
+    }
+
+    @Override
+    public void triggerTurnEvent() {
+        this.setHp(this.getHp()-1);
     }
 
     public abstract static class Builder extends LivingBeing.Builder {

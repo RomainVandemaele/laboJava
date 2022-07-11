@@ -1,6 +1,6 @@
 package be.bf.labo.models;
 
-public class Grouper extends CarnivoreFish implements ICarnivoreFish{
+public class Grouper extends CarnivoreFish implements ICarnivore {
 
 
     public static class Builder extends CarnivoreFish.Builder {

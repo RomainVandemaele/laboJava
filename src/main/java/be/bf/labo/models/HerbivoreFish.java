@@ -3,7 +3,7 @@ package be.bf.labo.models;
 import be.bf.labo.enumerations.Sex;
 import be.bf.labo.exceptions.WrongFoodException;
 
-public abstract class HerbivoreFish extends Fish implements IHerbivoreFish {
+public abstract class HerbivoreFish extends Fish implements IHerbivore {
 
 
     @Override
@@ -23,7 +23,9 @@ public abstract class HerbivoreFish extends Fish implements IHerbivoreFish {
     public <T extends LivingBeing> void eat(T food) throws WrongFoodException {
         if(isHungry()) {
             if(food instanceof Algua algua) {
-                algua = null;
+                //algua = null;
+                this.heal();
+                algua.getEaten();
             }else {
                 throw new WrongFoodException();
             }

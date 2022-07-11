@@ -1,6 +1,6 @@
 package be.bf.labo.models;
 
-public class Bass extends HerbivoreFish implements IHerbivoreFish{
+public class Bass extends HerbivoreFish implements IHerbivore {
 
     public static class Builder extends HerbivoreFish.Builder {
         public Fish build() {

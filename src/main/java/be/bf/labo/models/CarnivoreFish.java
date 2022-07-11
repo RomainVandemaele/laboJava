@@ -2,10 +2,9 @@ package be.bf.labo.models;
 
 import be.bf.labo.enumerations.Sex;
 import be.bf.labo.exceptions.WrongFoodException;
-import lombok.NoArgsConstructor;
 
 
-public abstract class CarnivoreFish extends Fish implements  ICarnivoreFish {
+public abstract class CarnivoreFish extends Fish implements ICarnivore {
 
     public CarnivoreFish() {
         super();
@@ -24,7 +23,9 @@ public abstract class CarnivoreFish extends Fish implements  ICarnivoreFish {
     public <T extends LivingBeing> void eat(T food) throws WrongFoodException {
         if(isHungry()) {
             if(food instanceof Fish fish) {
-                fish = null;
+                //fish = null;
+                this.heal();
+                fish.getEaten();
             }else {
                 throw new WrongFoodException();
             }

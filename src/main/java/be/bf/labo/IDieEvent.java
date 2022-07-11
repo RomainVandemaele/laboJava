@@ -5,5 +5,5 @@ import be.bf.labo.models.LivingBeing;
 
 @FunctionalInterface
 public interface IDieEvent {
-    public boolean invoke(LivingBeing fish);
+    public void invoke(LivingBeing fish);
 }
