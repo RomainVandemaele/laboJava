@@ -49,7 +49,7 @@ public abstract class Fish extends LivingBeing implements IFish {
     @Override
     public void getEaten() {
         this.setHp(getHp()-4);
-        if(this.getHp()<=0) {
+        if(!isAlive()) {
             this.triggerDieEvent();
         }
     }

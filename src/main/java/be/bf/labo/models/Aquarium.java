@@ -32,12 +32,17 @@ public class Aquarium {
         System.out.printf("TURN %d \n\n",nTurn);
         System.out.printf("There is %d alguaes\n",this.alguae.size());
         System.out.printf("There is %d fishes\n",this.fishes.size());
+        System.out.println("BEFORE TURN");
+        fishes.forEach(System.out::println);
+
         SecureRandom sr = new SecureRandom();
         for ( Fish fish : fishes) {
-            System.out.println(fish);
-            LivingBeing food = selectTarget(fish);
-            fish.eat(food);
-            fish.triggerTurnEvent(); //update hp
+            if(fish.isAlive()) {
+                System.out.println(fish);
+                LivingBeing food = selectTarget(fish);
+                fish.eat(food);
+                fish.triggerTurnEvent(); //update hp
+            }
         }
 
         for ( Algua algua : alguae) {
@@ -52,10 +57,12 @@ public class Aquarium {
     public LivingBeing selectTarget(Fish attacker) {
         SecureRandom sr = new SecureRandom();
         LivingBeing food;
-        if(attacker instanceof HerbivoreFish herbFish) {
+        if(attacker instanceof IHerbivore herbFish) {
             final int index = sr.nextInt(0,this.alguae.size());
             food = this.alguae.get(index);
-            System.out.printf("%s eats algua\n",attacker.getName());
+
+            if(attacker.isHungry() ) { System.out.printf("%s eats algua\n",attacker.getName()); }
+
         }else  { //carnivore
             int index = sr.nextInt(0,this.fishes.size());
             food = this.fishes.get(index);
@@ -63,18 +70,18 @@ public class Aquarium {
                 index = sr.nextInt(0,this.fishes.size());
                 food = this.fishes.get(index);
             }
-            System.out.printf("fish %s eats fish %s\n",attacker.getName(),((Fish) food).getName());
+            if(attacker.isHungry() ) { System.out.printf("fish %s eats fish %s\n",attacker.getName(),((Fish) food).getName()); }
         }
         return food;
     }
 
     public void dieEvent(LivingBeing being) {
         if(being instanceof Fish fish) {
-            System.out.printf("%s is dead",fish.getName());
+            System.out.printf("%s is dead\n",fish.getName());
             fishes = fishes.stream().filter( f -> f.isAlive() ).toList();
         }else if(being instanceof Algua algua) {
             System.out.println("One algue is dead");
-            fishes = fishes.stream().filter( a -> a.isAlive() ).toList();
+            alguae = alguae.stream().filter( a -> a.isAlive() ).toList();
         }
     }
 
