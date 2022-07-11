@@ -5,18 +5,24 @@ import be.bf.labo.exceptions.WrongFoodException;
 
 
 public abstract class CarnivoreFish extends Fish implements ICarnivore {
+    @Override
+    public void eat(Fish fish) {
+
+    }
 
     public CarnivoreFish() {
         super();
     }
 
-    @Override
-    public void heal() {
-        this.setHp(getHp()+5);
-    }
+
 
     public CarnivoreFish(String name, Sex sex) {
         super(name,sex);
+    }
+
+    @Override
+    public void heal() {
+        this.setHp(getHp()+5);
     }
 
     @Override

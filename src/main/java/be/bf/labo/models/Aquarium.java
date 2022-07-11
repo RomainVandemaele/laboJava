@@ -35,7 +35,8 @@ public class Aquarium {
         SecureRandom sr = new SecureRandom();
         for ( Fish fish : fishes) {
             System.out.println(fish);
-            fish.eat( selectTarget(fish));
+            LivingBeing food = selectTarget(fish);
+            fish.eat(food);
             fish.triggerTurnEvent(); //update hp
         }
 
@@ -54,6 +55,7 @@ public class Aquarium {
         if(attacker instanceof HerbivoreFish herbFish) {
             final int index = sr.nextInt(0,this.alguae.size());
             food = this.alguae.get(index);
+            System.out.printf("%s eats algua\n",attacker.getName());
         }else  { //carnivore
             int index = sr.nextInt(0,this.fishes.size());
             food = this.fishes.get(index);
@@ -61,6 +63,7 @@ public class Aquarium {
                 index = sr.nextInt(0,this.fishes.size());
                 food = this.fishes.get(index);
             }
+            System.out.printf("fish %s eats fish %s\n",attacker.getName(),((Fish) food).getName());
         }
         return food;
     }
@@ -68,10 +71,10 @@ public class Aquarium {
     public void dieEvent(LivingBeing being) {
         if(being instanceof Fish fish) {
             System.out.printf("%s is dead",fish.getName());
-            fishes = fishes.stream().filter( f -> !f.getName().equals(fish.getName())).toList();
+            fishes = fishes.stream().filter( f -> f.isAlive() ).toList();
         }else if(being instanceof Algua algua) {
             System.out.println("One algue is dead");
-            fishes = fishes.stream().filter( a -> a.equals(algua) ).toList();
+            fishes = fishes.stream().filter( a -> a.isAlive() ).toList();
         }
     }
 

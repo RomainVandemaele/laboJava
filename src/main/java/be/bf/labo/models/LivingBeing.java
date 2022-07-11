@@ -25,6 +25,10 @@ public abstract class LivingBeing {
         }
     }
 
+    public boolean isAlive() {
+        return hp>=0;
+    }
+
     public abstract void heal(); //heal after eating
     public abstract void getEaten();
 
@@ -42,7 +46,5 @@ public abstract class LivingBeing {
         public abstract LivingBeing build();
 
     }
-
-
 
 }
