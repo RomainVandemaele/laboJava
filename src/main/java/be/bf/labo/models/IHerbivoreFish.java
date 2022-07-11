@@ -1,2 +1,5 @@
-package be.bf.labo.models;public class IHerbivore {
+package be.bf.labo.models;
+
+public interface IHerbivoreFish  extends IFish {
+    void eat(Algua plant);
 }

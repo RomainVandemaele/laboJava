@@ -1,2 +1,5 @@
-package be.bf.labo.models;public interface ICarnivore {
+package be.bf.labo.models;
+
+public interface ICarnivoreFish extends IFish {
+
 }

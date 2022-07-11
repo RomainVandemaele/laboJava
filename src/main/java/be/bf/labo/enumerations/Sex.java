@@ -1,2 +1,6 @@
-package be.bf.labo.enumerations;public class Sex {
+package be.bf.labo.enumerations;
+
+public enum Sex {
+    MALE,
+    FEMALE;
 }
