@@ -21,7 +21,7 @@ public class Algua extends LivingBeing implements IAlgua {
     @Override
     public void getEaten() {
         this.setHp(this.getHp()-2);
-        if(getHp() <=0) {
+        if(!this.isAlive()) {
             this.triggerDieEvent();
         }
     }

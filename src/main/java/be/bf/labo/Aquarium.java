@@ -1,5 +1,9 @@
-package be.bf.labo.models;
+package be.bf.labo;
 
+import be.bf.labo.models.Algua;
+import be.bf.labo.models.Fish;
+import be.bf.labo.models.IHerbivore;
+import be.bf.labo.models.LivingBeing;
 import lombok.Getter;
 
 import java.security.SecureRandom;
