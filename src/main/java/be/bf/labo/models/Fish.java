@@ -6,26 +6,40 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
+import java.security.PublicKey;
+import java.security.SecureRandom;
+
+
 @ToString
 public abstract class Fish extends LivingBeing implements IFish {
-    @Getter @Setter
+    @Getter
     private String name;
     @Getter @Setter
     private Sex sex;
+
+    public Fish() {
+        SecureRandom sr = new SecureRandom();
+        this.setName( "P" + sr.nextInt(1,100) ) ;
+        this.setSex(sr.nextBoolean()?Sex.MALE:Sex.FEMALE);
+    }
 
     public Fish(String name, Sex sex) {
         this.setName(name);
         this.setSex(sex);
     }
 
-    private void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
     @Override
     public abstract <T extends LivingBeing> void eat(T food);
 
+
+    @Override
+    public void getEaten() {
+        this.setHp(getHp()-4);
+    }
 
     public abstract static class Builder extends LivingBeing.Builder {
 

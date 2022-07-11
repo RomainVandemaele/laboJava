@@ -1,9 +1,7 @@
 package be.bf.labo;
 
 import be.bf.labo.enumerations.Sex;
-import be.bf.labo.models.Algua;
-import be.bf.labo.models.Aquarium;
-import be.bf.labo.models.Fish;
+import be.bf.labo.models.*;
 
 public class Main {
 
@@ -16,20 +14,21 @@ public class Main {
                 .addAlgua(new Algua())
                 .addAlgua(new Algua());
 
-//        aquarium.addFish((Fish) new Fish.Builder().name("P1").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P2").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P3").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P4").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P5").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P6").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P7").sex(Sex.MALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P8").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P9").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P10").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P11").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P12").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P13").sex(Sex.FEMALE).build())
-//                .addFish((Fish) new Fish.Builder().name("P14").sex(Sex.FEMALE).build());
+        Fish f = new Carp();
+        System.out.println(f.getName());
+
+        aquarium.addFish((Fish) new Tuna.Builder().name("P1").sex(Sex.MALE).build())
+                .addFish((Fish) new Sole.Builder().name("P2").sex(Sex.MALE).build())
+                .addFish((Fish) new Grouper.Builder().name("P3").sex(Sex.MALE).build())
+                .addFish((Fish) new ClownFish.Builder().name("P4").sex(Sex.MALE).build())
+                .addFish((Fish) new Carp.Builder().name("P5").sex(Sex.MALE).build())
+                .addFish((Fish) new Bass.Builder().name("P6").sex(Sex.MALE).build())
+                .addFish((Fish) new Tuna.Builder().name("P8").sex(Sex.FEMALE).build())
+                .addFish((Fish) new Sole.Builder().name("P9").sex(Sex.FEMALE).build())
+                .addFish((Fish) new Grouper.Builder().name("P10").sex(Sex.FEMALE).build())
+                .addFish((Fish) new ClownFish.Builder().name("P11").sex(Sex.FEMALE).build())
+                .addFish((Fish) new Carp.Builder().name("P12").sex(Sex.FEMALE).build())
+                .addFish((Fish) new Bass.Builder().name("P13").sex(Sex.FEMALE).build());
 
         aquarium.turn();
 
