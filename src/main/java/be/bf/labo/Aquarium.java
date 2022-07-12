@@ -39,7 +39,7 @@ public class Aquarium {
         System.out.println("BEFORE TURN");
         fishes.forEach(System.out::println);
 
-        SecureRandom sr = new SecureRandom();
+        //SecureRandom sr = new SecureRandom();
         for ( Fish fish : fishes) {
             if(fish.isAlive()) {
                 System.out.println(fish);
@@ -61,7 +61,7 @@ public class Aquarium {
     public LivingBeing selectTarget(Fish attacker) {
         SecureRandom sr = new SecureRandom();
         LivingBeing food;
-        if(attacker instanceof IHerbivore herbFish) {
+        if(attacker instanceof IHerbivore ) {
             final int index = sr.nextInt(0,this.alguae.size());
             food = this.alguae.get(index);
 
@@ -82,10 +82,10 @@ public class Aquarium {
     public void dieEvent(LivingBeing being) {
         if(being instanceof Fish fish) {
             System.out.printf("%s is dead\n",fish.getName());
-            fishes = fishes.stream().filter( f -> f.isAlive() ).toList();
+            fishes = fishes.stream().filter( Fish::isAlive ).toList();
         }else if(being instanceof Algua algua) {
             System.out.println("One algue is dead");
-            alguae = alguae.stream().filter( a -> a.isAlive() ).toList();
+            alguae.removeIf( a -> !algua.isAlive());
         }
     }
 

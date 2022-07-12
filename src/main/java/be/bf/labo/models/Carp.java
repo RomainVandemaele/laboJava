@@ -1,7 +1,16 @@
 package be.bf.labo.models;
 
 import be.bf.labo.enumerations.Sex;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
+import javax.annotation.processing.SupportedOptions;
+
+@ToString(callSuper = true)
+//@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
 public class Carp extends Fish implements IHerbivore {
 
     public Carp() {

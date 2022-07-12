@@ -1,11 +1,13 @@
 package be.bf.labo.models;
 
 import be.bf.labo.IDieEvent;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
+//@Builder
 public abstract class LivingBeing {
     @Setter
     public IDieEvent dieEvent;
