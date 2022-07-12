@@ -14,7 +14,6 @@ public abstract class LivingBeing {
     private int hp = START_HP;
 
     protected LivingBeing setHp(int hp) {
-        if(hp <0 ) return this;
         this.hp = hp;
         return this;
     }
@@ -26,7 +25,7 @@ public abstract class LivingBeing {
     }
 
     public boolean isAlive() {
-        return hp>=0;
+        return hp>0;
     }
 
     public abstract void heal(); //heal after eating

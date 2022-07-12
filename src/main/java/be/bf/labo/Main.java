@@ -30,7 +30,7 @@ public class Main {
 //                .addFish((Fish) new Carp.Builder().name("P12").sex(Sex.FEMALE).build())
 //                .addFish((Fish) new Bass.Builder().name("P13").sex(Sex.FEMALE).build());
 
-        for (int i=0;i<7;++i) {
+        for (int i=0;i<20;++i) {
             aquarium.turn();
         }
     }
